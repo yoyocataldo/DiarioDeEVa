@@ -1,9 +1,11 @@
 package com.primer.pokemonos
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.primer.pokemonos.databinding.ItemListPokemonBinding
 
 class PokeAdapter: RecyclerView.Adapter<PokeAdapter.PokemonVH>() {
@@ -12,6 +14,13 @@ class PokeAdapter: RecyclerView.Adapter<PokeAdapter.PokemonVH>() {
     class PokemonVH(val biding:ItemListPokemonBinding) : RecyclerView.ViewHolder(biding.root) {
         fun bind(pokemon: Pokemon) {
 biding.pokeNombres.text=pokemon.name
+            biding.tvid.text=pokemon.id
+            biding.tvtipo.text=pokemon.type.toString()
+val context=biding.root.context
+            Glide.with(context)
+                .load(pokemon.img)
+                .into(biding.ivpokemon)
+
         }
 
     }
