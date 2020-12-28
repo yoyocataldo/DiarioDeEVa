@@ -3,6 +3,10 @@ package com.primer.pokemonos
 import java.util.*
 
 class Pokedex {
+    fun getListaFiltrada(tipo:String):List<Pokemon>{
+        val listaFiltrada=pokelist.filter { p->p.type.contains(tipo) }
+        return listaFiltrada
+    }
     val pokelist: List<Pokemon>
         get() {
             val pokelist: MutableList<Pokemon> = ArrayList<Pokemon>()
