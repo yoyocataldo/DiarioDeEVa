@@ -8,7 +8,7 @@ import com.primer.pokemonos.databinding.ItemListPokemonBinding
 
 class PokeAdapter: RecyclerView.Adapter<PokeAdapter.PokemonVH>() {
 
-    val listaPokemones=Pokedex().pokelist
+    var listaPokemones=Pokedex().pokelist
     class PokemonVH(val biding:ItemListPokemonBinding) : RecyclerView.ViewHolder(biding.root) {
         fun bind(pokemon: Pokemon) {
 biding.pokeNombres.text=pokemon.name
@@ -29,6 +29,18 @@ biding.pokeNombres.text=pokemon.name
 
     override fun getItemCount(): Int {
         return listaPokemones.size
+
+    }
+    fun updatePokeList(type:String) {
+
+        listaPokemones= Pokedex().getListaFiltrada(type)
+        notifyDataSetChanged()
+
+    }
+    fun allPokemones() {
+
+        listaPokemones= Pokedex().pokelist
+        notifyDataSetChanged()
 
     }
 }

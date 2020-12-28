@@ -7,6 +7,16 @@ class Pokedex {
         val listaFiltrada=pokelist.filter { p->p.type.contains(tipo) }
         return listaFiltrada
     }
+    fun getType():List<String>{
+        val listatipos= mutableListOf<String>()
+        listatipos.add("All")
+        for (pokemon in pokelist){
+            for (type in pokemon.type){
+           listatipos.add(type)
+            }
+        }
+        return listatipos.distinct().sorted()
+               }
     val pokelist: List<Pokemon>
         get() {
             val pokelist: MutableList<Pokemon> = ArrayList<Pokemon>()
